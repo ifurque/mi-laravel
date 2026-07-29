@@ -56,7 +56,7 @@
 </section>
 
 <section class="card" id="quienes-somos">
-    <div class="eyebrow">¿Quiénes somos?</div>
+    <h2 style="font-size: 2rem; margin-bottom: 1rem;">¿Quiénes somos?</h2>
     <div class="flip-card flip-card-large" style="max-width:100%;">
         <div class="flip-card-inner">
             <div class="flip-face flip-front">

@@ -18,6 +18,12 @@
                 $extension = strtolower(pathinfo($name, PATHINFO_EXTENSION));
                 return in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'mp4'], true);
             }));
+            $galleryItems = array_values(array_filter($galleryItems, function ($name) {
+                return strtolower($name) !== '16.jpg';
+            }));
+            if (!in_array('plantando.jpeg', $galleryItems, true) && file_exists($galleryDir . '/plantando.jpeg')) {
+                $galleryItems[] = 'plantando.jpeg';
+            }
             usort($galleryItems, function ($a, $b) {
                 $isVideoA = strtolower(pathinfo($a, PATHINFO_EXTENSION)) === 'mp4';
                 $isVideoB = strtolower(pathinfo($b, PATHINFO_EXTENSION)) === 'mp4';

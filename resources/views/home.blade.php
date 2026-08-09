@@ -32,6 +32,37 @@
             });
         });
 
+        var tutorialToggle = document.getElementById('btn-ver-tutorial');
+        var tutorialClose = document.getElementById('btn-cerrar-tutorial');
+        var tutorialSection = document.getElementById('tutorial-video-section');
+
+        function showTutorial() {
+            if (tutorialSection) {
+                tutorialSection.classList.add('active');
+                tutorialSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        function hideTutorial() {
+            if (tutorialSection) {
+                tutorialSection.classList.remove('active');
+            }
+        }
+
+        if (tutorialToggle) {
+            tutorialToggle.addEventListener('click', function (event) {
+                event.stopPropagation();
+                showTutorial();
+            });
+        }
+
+        if (tutorialClose) {
+            tutorialClose.addEventListener('click', function (event) {
+                event.stopPropagation();
+                hideTutorial();
+            });
+        }
+
         // Close on ESC
         document.addEventListener('keydown', function(ev){ if (ev.key === 'Escape') { lightbox.style.display = 'none'; lightbox.innerHTML = ''; } });
     });
@@ -86,7 +117,7 @@
                 </ul>
             </div>
             <div class="flip-face flip-back">
-                <img class="team-photo" src="/images/ep33.jpg" alt="Foto del equipo de E.P n°33 Horacio Rega Molina" />
+                <img class="team-photo" src="/images/ep33.jpg" alt="Foto del equipo de E.P. n°33 Horacio Rega Molina" />
             </div>
         </div>
     </div>
@@ -106,13 +137,29 @@
     </ul>
 </section>
 
-<section class="card hero-repelentes">
-    <h1>Biopreparados fáciles</h1>
-    <ul>
-        <li><strong>Agua de ajo:</strong> Machacar 4 o 5 dientes de ajo. Dejar reposar en un litro de agua durante 24 horas. Hervir la mezcla 20 minutos. Enfriar y colar. Pulverizar sobre las plantas cada 3 o 5 días.</li>
-        <li><strong>Bolitas de paraíso:</strong> Colocar un puñado de bolitas de paraíso en medio litro de agua. Dejar fermentar 10 días, destapado. Diluir en un balde de agua y regar la huerta.</li>
-        <li><strong>Colocación de arroz partido y cáscaras de cítricos:</strong> Colocar en distintas zonas de la huerta para ahuyentar hormigas negras.</li>
-    </ul>
+<section class="card hero hero-repelentes tutorial-card">
+    <div class="tutorial-header">
+        <div>
+            <h1>Biopreparados fáciles</h1>
+            <ul>
+                <li><strong>Agua de ajo</strong> (para ahuyentar hormigas negras): Machacar 4 o 5 dientes de ajo. Dejar reposar en un litro de agua durante 24 horas. Hervir la mezcla 20 minutos. Enfriar y colar. Pulverizar sobre las plantas cada 3 o 5 días.</li>
+                <li><strong>Bolitas de paraíso</strong> (para combatir caracoles y hormigas negras): Colocar un puñado de bolitas de paraíso en medio litro de agua. Dejar fermentar 10 días, destapado. Diluir en un balde de agua y regar la huerta.</li>
+                <li><strong>Colocación de arroz partido y cáscaras de cítricos:</strong> Colocar en distintas zonas de la huerta para ahuyentar hormigas negras.</li>
+            </ul>
+        </div>
+        <div class="tutorial-actions">
+            <button type="button" id="btn-ver-tutorial" class="btn btn-primary">Ver tutorial</button>
+        </div>
+    </div>
+    <div id="tutorial-video-section" class="tutorial-video-section">
+        <video controls playsinline preload="metadata" class="tutorial-video">
+            <source src="{{ asset('foto feria de ciencias/videoaguadeajo.mp4') }}" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+        </video>
+        <div class="actions tutorial-close-action">
+            <button type="button" id="btn-cerrar-tutorial" class="btn btn-secondary">Volver</button>
+        </div>
+    </div>
 </section>
 
 @endsection

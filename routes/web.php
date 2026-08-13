@@ -7,5 +7,6 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/album', function () {
-    return view('album');
+    // Redirect to the static album index placed under public/album
+    return redirect('/album/index.html');
 })->name('album');
